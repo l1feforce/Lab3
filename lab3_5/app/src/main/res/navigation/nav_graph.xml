@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/first_fragment">
+
+    <fragment
+            android:id="@+id/first_fragment"
+            android:label="First Fragment"
+            android:name="ru.spbstu.gusev.lab3_5_2.FirstFragment"
+            tools:layout="@layout/layout_first">
+        <action android:id="@+id/action_first_fragment_to_info_fragment" app:destination="@id/info_fragment"
+        >
+            <argument android:defaultValue="2" android:name="next_fragment"/>
+        </action>
+    </fragment>
+    <fragment
+            android:id="@+id/second_fragment"
+            android:label="Second Fragment"
+            android:name="ru.spbstu.gusev.lab3_5_2.SecondFragment"
+            tools:layout="@layout/layout_second">
+        <action android:id="@+id/action_second_fragment_to_info_fragment" app:destination="@id/info_fragment">
+            <argument android:defaultValue="3" android:name="next_fragment"/>
+        </action>
+    </fragment>
+    <fragment
+            android:id="@+id/third_fragment"
+            android:label="Third Fragment"
+            android:name="ru.spbstu.gusev.lab3_5_2.ThirdFragment"
+            tools:layout="@layout/layout_third">
+        <action android:id="@+id/action_third_fragment_to_first_fragment" app:destination="@id/first_fragment"
+                app:popUpTo="@+id/first_fragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/info_fragment"
+            android:label="Info Fragment"
+            android:name="ru.spbstu.gusev.lab3_5_2.InfoFragment"
+            tools:layout="@layout/layout_info">
+        <action android:id="@+id/action_info_fragment_to_second_fragment" app:destination="@id/second_fragment"
+                app:popUpTo="@+id/first_fragment"/>
+        <action android:id="@+id/action_info_fragment_to_third_fragment" app:destination="@id/third_fragment"
+                app:popUpTo="@+id/second_fragment"/>
+        <argument android:name="next_fragment" app:argType="integer" android:defaultValue="1"/>
+    </fragment>
+    <activity android:id="@+id/about_activity" android:name="ru.spbstu.gusev.lab3_5_2.AboutActivity"
+              android:label="activity_about" tools:layout="@layout/activity_about"/>
+</navigation>
